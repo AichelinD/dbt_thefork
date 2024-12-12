@@ -2,7 +2,7 @@
 
 
 
-    select 
+select 
     CUSTOMER_UUID as customer_id,
     ONLINE_CUSTOMER_UUID as customer_online_id,
     CASE WHEN ONLINE_CUSTOMER_UUID IS NULL THEN 0 ELSE 1 END as is_customer_online,
