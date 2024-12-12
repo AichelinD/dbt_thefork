@@ -1,5 +1,3 @@
-
-
 select 
 RESERVATION_UUID as reservation_id,
 CUSTOMER_UUID as customer_id,
@@ -13,5 +11,4 @@ PARTY_SIZE as party_size,
 IS_WALK_IN as is_walk_in,
 LUNCH_TYPE as lunch_type,
 from thefork.stg_reservation r
-left outer join thefork.d_channels c on r.CHANNEL = c.channel 
-
+left outer join thefork.d_channels c on r.CHANNEL = c.channel
