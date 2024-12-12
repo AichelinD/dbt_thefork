@@ -1,6 +1,6 @@
 
 
-with customers as (
+
 
     select 
     CUSTOMER_UUID as customer_id,
@@ -9,8 +9,4 @@ with customers as (
     LOCALE as customer_locale,
     STATUS as customer_STATUS, 
     from thefork.stg_offline_customers
-)
-
-
-select * from customers
 
