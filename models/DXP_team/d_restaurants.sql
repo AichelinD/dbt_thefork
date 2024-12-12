@@ -1,3 +1,9 @@
+{{
+    config(
+        materialized='table',
+        unique_key='restaurant_id'
+    )
+}}
 
 SELECT 
 DISTINCT 

@@ -1,4 +1,9 @@
-
+{{
+    config(
+        materialized='table',
+        unique_key='date_id'
+    )
+}}
 with all_date as (
 select distinct date from ( 
   SELECT
