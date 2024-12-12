@@ -1,3 +1,10 @@
+{{
+    config(
+        materialized='incremental',
+        unique_key='reservation_id'
+    )
+}}
+
 select 
 RESERVATION_UUID as reservation_id,
 CUSTOMER_UUID as customer_id,
@@ -10,5 +17,13 @@ IS_ONLINE as is_online,
 PARTY_SIZE as party_size,
 IS_WALK_IN as is_walk_in,
 LUNCH_TYPE as lunch_type,
+TS_CRE as reservation_create_date,
+TS_UPD as reservation_update_date
 from thefork.stg_reservation r
 left outer join thefork.d_channels c on r.CHANNEL = c.channel_name
+{% if is_incremental() %}
+where 
+TS_CRE >= (select coalesce(max(event_time),'1900-01-01') from {{ this }} )
+or
+TS_UPD >= (select coalesce(max(event_time),'1900-01-01') from {{ this }} )
+{% endif %}
