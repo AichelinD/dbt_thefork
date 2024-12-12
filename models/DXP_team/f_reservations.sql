@@ -1,7 +1,7 @@
 {{
     config(
-        materialized='incremental',
-        unique_key='reservation_id'
+       materialized='table'
+       unique_key='reservation_id'
     )
 }}
 
@@ -21,9 +21,11 @@ TS_CRE as reservation_create_date,
 TS_UPD as reservation_update_date
 from thefork.stg_reservation r
 left outer join thefork.d_channels c on r.CHANNEL = c.channel_name
+/*
 {% if is_incremental() %}
 where 
 TS_CRE >= (select coalesce(max(event_time),'1900-01-01') from {{ this }} )
 or
 TS_UPD >= (select coalesce(max(event_time),'1900-01-01') from {{ this }} )
 {% endif %}
+*/

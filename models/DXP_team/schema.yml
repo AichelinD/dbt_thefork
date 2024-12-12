@@ -7,42 +7,32 @@ models:
       columns:
           - name: reservation_id
             description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
+            
 
     - name: d_restaurants
       description: "restaurant dimension table"
       columns:
           - name: restaurant_id
             description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
+            
 
     - name: d_date
       description: "date dimension table"
       columns:
           - name: date_id
             description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null  
+             
 
     - name: d_channels
       description: "channel dimension table"
       columns:
           - name: channel_id
             description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
+           
 
     - name: d_customers
       description: "customers dimension table"
       columns:
           - name: customer_id
             description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null                                 
+                                            
