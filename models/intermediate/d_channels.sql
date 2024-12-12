@@ -1,5 +1,5 @@
 SELECT 
 distinct DENSE_RANK() OVER (ORDER BY channel) AS channel_id,
-CHANNEL  
+CHANNEL as channel_name
 from thefork.stg_reservation  
 ORDER BY CHANNEL
