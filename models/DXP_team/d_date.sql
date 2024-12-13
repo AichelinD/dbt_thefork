@@ -21,4 +21,3 @@ FORMAT_DATE('%m', date) as month,
 FORMAT_DATE('%d', date) as day,
 FORMAT_DATE('%A' , date) as weekday,
 from all_date
-limit 2
