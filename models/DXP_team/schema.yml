@@ -16,7 +16,7 @@ models:
             description: "The primary key for this table"
             
 
-    - name: d_date
+    - name: d_dates
       description: "date dimension table"
       columns:
           - name: date_id
