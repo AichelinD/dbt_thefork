@@ -4,7 +4,7 @@
 
 {{
     config(
-        materialized='table',
+        materialized='incremental',
         unique_key='customer_id'
     )
 }}
@@ -19,10 +19,9 @@ select
     TS_UPD                                                      as customer_update_date
 from {{ ref('stg_offline_customers') }}
 
-/*{% if is_incremental() %}
+{% if is_incremental() %}
 where 
-TS_CRE >= (select coalesce(max(event_time),'1900-01-01') from {{ this }} )
-or
-TS_UPD >= (select coalesce(max(event_time),'1900-01-01') from {{ this }} )
+    cast(left(TS_CRE,10) as date) >= DATE_SUB(CURRENT_DATE(), INTERVAL 14 DAY)
+    or
+    cast(left(TS_UPD,10) as date) >= DATE_SUB(CURRENT_DATE(), INTERVAL 14 DAY)
 {% endif %}
-*/
