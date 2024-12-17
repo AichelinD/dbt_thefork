@@ -7,11 +7,9 @@ models:
       columns:
           - name: reservation_id
             description: "The primary key for this table"
-      tests:
-          - unique:
-            column_name: reservation_id
-          - not_null:
-            column_name: reservation_id
+            tests:
+            - unique
+            - not_null
 
     - name: d_restaurants
       description: "restaurant dimension table"
