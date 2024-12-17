@@ -4,7 +4,7 @@
 
 {{
     config(
-       materialized='incremental',
+       materialized='table',
        unique_key='reservation_id'
     )
 }}
@@ -31,9 +31,11 @@ select
 from {{ ref('stg_reservation') }} r
 left outer join channels c on r.CHANNEL = c.channel_name
 
+/*
 {% if is_incremental() %}
 where 
     cast(left(TS_CRE,10) as date) >= DATE_SUB(CURRENT_DATE(), INTERVAL 14 DAY)
     or
     cast(left(TS_UPD,10) as date) >= DATE_SUB(CURRENT_DATE(), INTERVAL 14 DAY)
 {% endif %}
+*/
